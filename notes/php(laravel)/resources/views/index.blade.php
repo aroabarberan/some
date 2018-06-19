@@ -9,13 +9,13 @@
 <body>
 <table>
         <tr>
-            <!-- <th><a href="{{ route('index', ['sort' => 'title_asc']) }}">Title</a></th> -->
+            <th><a href=>Id</a></th>
             <th><a href=>Title</a></th>
             <th><a href=>Content</a></th>
-            <!-- <th><a href="{{ route('index', ['sort' => 'content_asc']) }}">Content</a></th> -->
         </tr>
         @foreach($notes as $note)
             <tr>
+                <td>{{ $note->id }}</td>
                 <td>{{ $note->title }}</td>
                 <td>{{ $note->content }}</td>
             </tr>
