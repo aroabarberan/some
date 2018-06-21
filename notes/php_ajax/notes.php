@@ -8,8 +8,8 @@ $results = $db->readAll();
 
 $notes = [];
 
-foreach ($results as $result) {
-    $notes[] = [
+foreach ($results as $key => $result) {
+    $notes[$key] = [
         'id' => $result['id'],
         'title' => $result['title'],
         'content' => $result['content'],

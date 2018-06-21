@@ -36,34 +36,26 @@
                 <td class="content"></td>
                 <td class="content"></td>
             </tr>
-            <tr>
-                <td class="content"></td>
-                <td class="content"></td>
-                <td class="content"></td>
-            </tr>
         </table>
 
         <script>
             function getNotes() {
 
                 const request = async () => {
-                    var content = document.querySelectorAll('.content');
-                    const response = await fetch('http://localhost/some/notes/php_ajax/notes.php');
-                    const json = await response.json();
-                    console.log(json);
-                    
-                
+                    var content = document.querySelectorAll('.content')
+                    const response = await fetch('http://localhost/some/notes/php_ajax/notes.php')
+                    const json = await response.json()
+                    var cont = 0;
+
                     for (var i = 0; i < json.length; i++) {
-                        console.log(i);
-                        content[i].innerHTML = json[i].content;                     
-                        content[i].innerHTML = json[i].title; 
-                        content[i].innerHTML = json[i].id;                           
+                        content[cont++].textContent = json[i].id;    
+                        content[cont++].textContent = json[i].title;
+                        content[cont++].textContent = json[i].content;                     
                     }
                 }
-                
-                request(); 
+                request();
             }
 
-            </script>
+        </script>
         </body>
     </html>
