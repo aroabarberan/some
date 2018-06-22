@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<httpProtocol>
+    <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*" />
+    </customHeaders>
+</httpProtocol>
 <!-- <table>
     <tr>
         <th><a href=>Id</a></th>
