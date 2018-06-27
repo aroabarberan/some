@@ -10,11 +10,7 @@
 </head>
 <body>
 
-<httpProtocol>
-    <customHeaders>
-        <add name="Access-Control-Allow-Origin" value="*" />
-    </customHeaders>
-</httpProtocol>
+
 <!-- <table>
     <tr>
         <th><a href=>Id</a></th>
@@ -29,6 +25,9 @@
         </tr>
     @endforeach
 </table> -->
+<?php
+header('Access-Control-Allow-Origin: http://localhost:3000');
+?>
 <pre>{{ $json }}</pre>
 
 </body>

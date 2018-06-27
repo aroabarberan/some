@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-
-class ShowNotes extends Component {
-    render() {
-        function getNotes() {
-
-            const request = async () => {
-                const response = await fetch('http://localhost:8000')
+export default class ShowNotes extends Component {
+    getNotes(e) {
+        e.preventDefault()
+        const request = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000')
                 const json = await response.json()
-                // console.log(json)
+                console.log(json)
+            } catch (ERROR) {
+                console.log(ERROR)
             }
-            request()
         }
+        request()
+    }
+    render() {
         return (
-
-            <button className="notes" onClick={getNotes()}>Get all notes</button>
-        );
+            <button onClick={e => this.getNotes(e)}>Get all notes</button>
+        )
     }
 }
-
 if (document.getElementById('show-notes')) {
     ReactDOM.render(<ShowNotes />, document.getElementById('show-notes'));
 }
