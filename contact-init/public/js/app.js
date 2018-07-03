@@ -13867,13 +13867,17 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CreateContact__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CreateContact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_CreateContact__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13896,6 +13900,9 @@ Vue.component('example-component', __webpack_require__(39));
 var app = new Vue({
   el: '#app'
 });
+
+
+// render(<CreateContact />, document.getElementById('create-contact'));
 
 /***/ }),
 /* 13 */
@@ -47379,6 +47386,12 @@ if (false) {
 
 /***/ }),
 /* 43 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Unexpected token (27:8)\n\n\u001b[0m \u001b[90m 25 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mCreateContact\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mComponent\u001b[39m {\n \u001b[90m 26 | \u001b[39m    render() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33mform\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 29 | \u001b[39m                    \u001b[33m<\u001b[39m\u001b[33mlabel\u001b[39m name\u001b[33m=\u001b[39m\u001b[32m\"name\"\u001b[39m\u001b[33m>\u001b[39m\u001b[33mName\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mlabel\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 30 | \u001b[39m                    \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m type\u001b[33m=\u001b[39m\u001b[32m\"text\"\u001b[39m name\u001b[33m=\u001b[39m\u001b[32m\"name\"\u001b[39m id\u001b[33m=\u001b[39m\u001b[32m\"name\"\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n");
+
+/***/ }),
+/* 44 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
