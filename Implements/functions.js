@@ -5,14 +5,16 @@ class Array {
     }
 
     myMap(method) {
-        const elemets = []
-        this.values.forEach(e => elemets.push(method(e)));
-        return elemets
+        const elements = []
+        this.values.forEach(e => elements.push(method(e)));
+        return elements
     }
 
     //TODO
-    myFilter() {
-        return "ble"
+    myFilter(method) {
+        const elements = []
+        this.values.forEach(e => { if (method(e)) elements.push(e) });
+        return elements
     }
 
     //TODO
@@ -24,8 +26,21 @@ class Array {
 const data = [{ name: 'Aroa', age: 23 }, { name: 'Ivan', age: 26 }]
 const arrayValues = new Array(data);
 
-const result = arrayValues.myMap(person => person.age > 25)
-console.log(result)
 
-// var patatin = data.map((param) => param.age > 25)
-// console.log(patatin)
+//  My map
+console.log("\nMY MAP")
+const resultsMyMap = arrayValues.myMap(person => person.age > 25)
+console.log(resultsMyMap)
+
+var resultsOriginMap = arrayValues.values.map(params => params.age > 25)
+console.log(resultsOriginMap)
+
+
+//  My filter
+console.log("\nMY FILTER")
+const resultsMyFilter = arrayValues.myFilter(person => person.age > 25)
+console.log(resultsMyFilter)
+
+var resultsOriginFilter = arrayValues.values.filter(params => params.age > 25)
+console.log(resultsOriginFilter)
+
