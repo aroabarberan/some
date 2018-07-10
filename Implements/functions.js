@@ -5,9 +5,9 @@ class Array {
     }
 
     myMap(method) {
-        var elements = []
-        this.values.forEach(element => elements.push(method(element)));
-        return elements
+        const elemets = []
+        this.values.forEach(e => elemets.push(method(e)));
+        return elemets
     }
 
     //TODO
