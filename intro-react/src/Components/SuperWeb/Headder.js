@@ -5,9 +5,11 @@ export class Head extends Component {
     super()
     this.click = this.click.bind(this)
   }
+
   click() {
     this.props.click()
   }
+  
   render() {
     return (
       <div>
@@ -22,11 +24,12 @@ export class Button extends Component {
   constructor(props) {
     super(props)
     this.click = this.click.bind(this)
-
   }
+
   click() {
     this.props.click()
   }
+
   render() {
     return (
       <div>
@@ -34,12 +37,4 @@ export class Button extends Component {
       </div>
     )
   }
-}
-
-export function Content() {
-  return (
-    <div>
-      <p>To access Web press login</p>
-    </div>
-  )
 }
