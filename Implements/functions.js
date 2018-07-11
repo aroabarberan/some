@@ -10,7 +10,6 @@ class Array {
         return elements
     }
 
-    //TODO
     myFilter(method) {
         const elements = []
         this.values.forEach(e => { if (method(e)) elements.push(e) });
@@ -18,8 +17,13 @@ class Array {
     }
 
     //TODO
-    myReduce() {
-        return "bli"
+    myReduce(method, valueInitial = 0) {
+        let sum = valueInitial
+        this.values.forEach(e => {
+            console.log(sum)
+            sum = method(sum, e)
+        });
+        return sum
     }
 }
 
@@ -44,3 +48,11 @@ console.log(resultsMyFilter)
 var resultsOriginFilter = arrayValues.values.filter(params => params.age > 25)
 console.log(resultsOriginFilter)
 
+// My Reduce
+console.log("\nMY REDUCE")
+const numbers = new Array([1, 2, 2, 1]);
+const resultsOriginMyReduce =  numbers.myReduce((total, num) => {return total - num})
+console.log(resultsOriginMyReduce)
+
+const resultsOriginReduce =  numbers.values.reduce((total, num) => {return total - num})
+console.log(resultsOriginReduce)
