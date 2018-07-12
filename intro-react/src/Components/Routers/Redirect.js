@@ -6,7 +6,7 @@ export function Redirect() {
     <Router>
       <div>
         <div>
-          <Link to='Home'>Home</Link><br />
+          <Link to='home'>Home</Link><br />
           <Link to='london'>London</Link><br />
           <Link to='irlanda'>Irlanda</Link><br />
           <Link to='watfor'>Watfor</Link><br />
