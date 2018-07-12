@@ -1,11 +1,11 @@
 const fs = require('fs')
 
-function readFilePromise() {
+function readFilePromise(file, encoding = 'utf-8') {
   return new Promise(resolve => {
-    fs.readFile('text.txt', 'utf-8', (err, data) => {
-      resolve(data)
+    fs.readFile(file, encoding,(err, data) => {
+      !err ? resolve(data) : console.log(err)
     })
   })
 }
 
-readFilePromise().then(console.log)
+readFilePromise('text.txt').then(console.log)
