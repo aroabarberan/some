@@ -11,10 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', 'NoteController@index')->name('index');
+Route::get('/notes', 'NoteController@allNotes')->name('notes');
 
 Auth::routes();
 

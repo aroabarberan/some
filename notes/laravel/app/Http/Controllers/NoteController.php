@@ -19,9 +19,10 @@ class NoteController extends Controller
         $this->service = $service;
     }
 
-    public function index() {
+    public function allNotes() {
         $notes = $this->service->readAll();
-        
-        return view('index', ['notes' => $notes, 'json' => json_encode($notes)]);
+        // $res = json_encode(['results' => $notes]);
+        $res = response()->json(['results' => $notes]);
+        return $res;
     }
 }
