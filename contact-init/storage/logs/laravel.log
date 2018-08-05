@@ -1,0 +1,329 @@
+[2018-07-02 09:43:14] production.ERROR: No application encryption key has been specified. {"exception":"[object] (RuntimeException(code: 0): No application encryption key has been specified. at /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:42)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Support/helpers.php(1041): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(NULL)
+#1 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(46): tap(NULL, Object(Closure))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(24): Illuminate\\Encryption\\EncryptionServiceProvider->key(Array)
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#4 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build(Object(Closure))
+#5 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('encrypter', Array)
+#6 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('encrypter', Array)
+#7 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(900): Illuminate\\Foundation\\Application->make('encrypter')
+#8 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(828): Illuminate\\Container\\Container->resolveClass(Object(ReflectionParameter))
+#9 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\\Container\\Container->resolveDependencies(Array)
+#10 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build('App\\\\Http\\\\Middle...')
+#11 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Middle...', Array)
+#12 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('App\\\\Http\\\\Middle...', Array)
+#13 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(140): Illuminate\\Foundation\\Application->make('App\\\\Http\\\\Middle...')
+#14 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#15 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#17 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(642): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#18 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(608): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#19 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(597): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#20 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#21 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /home/aroa/Documents/some/contact-init/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(31): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(31): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(51): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#35 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#39 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#40 /home/aroa/Documents/some/contact-init/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#41 /home/aroa/Documents/some/contact-init/server.php(21): require_once('/home/aroa/Docu...')
+#42 {main}
+"} 
+[2018-07-02 09:43:14] production.ERROR: No application encryption key has been specified. {"exception":"[object] (RuntimeException(code: 0): No application encryption key has been specified. at /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:42)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Support/helpers.php(1041): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(NULL)
+#1 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(46): tap(NULL, Object(Closure))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(24): Illuminate\\Encryption\\EncryptionServiceProvider->key(Array)
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#4 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build(Object(Closure))
+#5 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('encrypter', Array)
+#6 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('encrypter', Array)
+#7 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(900): Illuminate\\Foundation\\Application->make('encrypter')
+#8 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(828): Illuminate\\Container\\Container->resolveClass(Object(ReflectionParameter))
+#9 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\\Container\\Container->resolveDependencies(Array)
+#10 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build('App\\\\Http\\\\Middle...')
+#11 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Middle...', Array)
+#12 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('App\\\\Http\\\\Middle...', Array)
+#13 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(215): Illuminate\\Foundation\\Application->make('App\\\\Http\\\\Middle...')
+#14 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(189): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#15 /home/aroa/Documents/some/contact-init/public/index.php(60): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#16 /home/aroa/Documents/some/contact-init/server.php(21): require_once('/home/aroa/Docu...')
+#17 {main}
+"} 
+[2018-07-02 09:44:19] production.ERROR: No application encryption key has been specified. {"exception":"[object] (RuntimeException(code: 0): No application encryption key has been specified. at /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:42)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Support/helpers.php(1041): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(NULL)
+#1 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(46): tap(NULL, Object(Closure))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(24): Illuminate\\Encryption\\EncryptionServiceProvider->key(Array)
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#4 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build(Object(Closure))
+#5 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('encrypter', Array)
+#6 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('encrypter', Array)
+#7 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(900): Illuminate\\Foundation\\Application->make('encrypter')
+#8 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(828): Illuminate\\Container\\Container->resolveClass(Object(ReflectionParameter))
+#9 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\\Container\\Container->resolveDependencies(Array)
+#10 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build('App\\\\Http\\\\Middle...')
+#11 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Middle...', Array)
+#12 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('App\\\\Http\\\\Middle...', Array)
+#13 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(140): Illuminate\\Foundation\\Application->make('App\\\\Http\\\\Middle...')
+#14 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#15 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(667): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#17 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(642): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#18 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(608): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#19 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Router.php(597): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#20 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#21 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /home/aroa/Documents/some/contact-init/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(31): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(31): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(51): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#35 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(151): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#39 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#40 /home/aroa/Documents/some/contact-init/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#41 /home/aroa/Documents/some/contact-init/server.php(21): require_once('/home/aroa/Docu...')
+#42 {main}
+"} 
+[2018-07-02 09:44:19] production.ERROR: No application encryption key has been specified. {"exception":"[object] (RuntimeException(code: 0): No application encryption key has been specified. at /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:42)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Support/helpers.php(1041): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(NULL)
+#1 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(46): tap(NULL, Object(Closure))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(24): Illuminate\\Encryption\\EncryptionServiceProvider->key(Array)
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\\Encryption\\EncryptionServiceProvider->Illuminate\\Encryption\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#4 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build(Object(Closure))
+#5 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('encrypter', Array)
+#6 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('encrypter', Array)
+#7 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(900): Illuminate\\Foundation\\Application->make('encrypter')
+#8 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(828): Illuminate\\Container\\Container->resolveClass(Object(ReflectionParameter))
+#9 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\\Container\\Container->resolveDependencies(Array)
+#10 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\\Container\\Container->build('App\\\\Http\\\\Middle...')
+#11 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Middle...', Array)
+#12 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(734): Illuminate\\Container\\Container->make('App\\\\Http\\\\Middle...', Array)
+#13 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(215): Illuminate\\Foundation\\Application->make('App\\\\Http\\\\Middle...')
+#14 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(189): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#15 /home/aroa/Documents/some/contact-init/public/index.php(60): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#16 /home/aroa/Documents/some/contact-init/server.php(21): require_once('/home/aroa/Docu...')
+#17 {main}
+"} 
+[2018-07-02 10:05:41] local.ERROR: Command "make:migrate" is not defined.
+
+Did you mean one of these?
+    make:auth
+    make:channel
+    make:command
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrate\" is not defined.
+
+Did you mean one of these?
+    make:auth
+    make:channel
+    make:command
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php:632)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(226): Symfony\\Component\\Console\\Application->find('make:migrate')
+#1 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/aroa/Documents/some/contact-init/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2018-07-02 10:05:49] local.ERROR: Not enough arguments (missing: "name"). {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): Not enough arguments (missing: \"name\"). at /home/aroa/Documents/some/contact-init/vendor/symfony/console/Input/Input.php:76)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Command/Command.php(246): Symfony\\Component\\Console\\Input\\Input->validate()
+#1 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Command.php(171): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#2 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(886): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(262): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 /home/aroa/Documents/some/contact-init/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2018-07-02 10:06:31] local.ERROR: Command "make:migrate" is not defined.
+
+Did you mean one of these?
+    make:auth
+    make:channel
+    make:command
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrate\" is not defined.
+
+Did you mean one of these?
+    make:auth
+    make:channel
+    make:command
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php:632)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(226): Symfony\\Component\\Console\\Application->find('make:migrate')
+#1 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/aroa/Documents/some/contact-init/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2018-07-02 10:06:35] local.ERROR: Not enough arguments (missing: "name"). {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): Not enough arguments (missing: \"name\"). at /home/aroa/Documents/some/contact-init/vendor/symfony/console/Input/Input.php:76)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Command/Command.php(246): Symfony\\Component\\Console\\Input\\Input->validate()
+#1 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Command.php(171): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#2 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(886): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(262): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 /home/aroa/Documents/some/contact-init/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2018-07-02 10:07:54] local.ERROR: Command "make" is not defined.
+
+Did you mean one of these?
+    make:auth
+    make:channel
+    make:command
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make\" is not defined.
+
+Did you mean one of these?
+    make:auth
+    make:channel
+    make:command
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php:632)
+[stacktrace]
+#0 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(226): Symfony\\Component\\Console\\Application->find('make')
+#1 /home/aroa/Documents/some/contact-init/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/aroa/Documents/some/contact-init/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/aroa/Documents/some/contact-init/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
