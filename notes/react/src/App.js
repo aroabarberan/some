@@ -6,32 +6,38 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      data: [],
+      data: []
     };
-  }
-
-  getNotes() {
     fetch('http://127.0.0.1:8000/notes')
       .then(res => res.json())
       .then(json => json.results)
       .then(data => this.setState({ data }))
-      .catch(console.log)
   }
 
+  // componentWillMount() {
+  //   fetch('http://127.0.0.1:8000/notes')
+  //     .then(res => res.json())
+  //     .then(json => json.results)
+  //     .then(data => this.setState({ data }))
+  //     .catch(console.log)
+  // }
+
   render() {
-    console.log(this.state.data)
-    return (
-      <div>
-        <h1>Notes</h1>
-        {this.getNotes()}
-        {this.state.data.map(n => {
-          <div>
-            <p>{n.title}</p>
-            <p>{n.content}</p>
-          </div>
-        })}
-      </div>
-    )
+    console.log(this.state.data.length)
+    if (this.state.data.length > 0) {
+      return (
+        <div>
+          {this.state.data.map(n => {
+            <div key={n.id}>
+              <p>{n.title}</p>
+              <p>{n.content}</p>
+            </div>
+          })}
+        </div>
+      )
+    } else {
+      return <p>Cargando notas...</p>
+    }
   }
 }
 
