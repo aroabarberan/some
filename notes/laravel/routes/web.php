@@ -13,18 +13,7 @@ use App\Note;
 */
 
 Route::get('/notes', 'NoteController@allNotes')->name('notes');
-// Route::delete('/notes/{id}', 'NoteController@deleteNote');
-Route::delete('/notes/{id}', function($id) {
-  try 
-  {
-    DB::table('notes')->where('id', $id)->delete();
-      return response()->json('note deleted');
-  }
-
-  catch (Exception $e) {
-      return response()->json($e->getMessage(), 500);
-  }
-});
+Route::delete('/notes/{id}', 'NoteController@deleteNote');
 
 Auth::routes();
 

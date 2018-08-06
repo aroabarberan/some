@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\NoteService;
 use App\Note;
+use DB;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
