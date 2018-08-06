@@ -11,10 +11,8 @@ class App extends React.Component {
 
     this.state = {
       data: [],
-      title: '',
-      content: ''
     };
-    this.removeNote = this.removeNote.bind(this)
+    this.deleteNote = this.deleteNote.bind(this)
   }
 
   componentWillMount() {
@@ -24,19 +22,16 @@ class App extends React.Component {
       .then(data => this.setState({ data }))
       .catch(console.log)
   }
-  removeNote(id) {
-    console.log(id)
-    fetch('http://127.0.0.1:8000/notes/' + id, {
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-
-      },
-      method: "post",
-      body: JSON.stringify({
-        key: id
+  deleteNote(id) {
+    return () => {
+      fetch('http://127.0.0.1:8000/notes/' + id, {
+        method: "DELETE",
       })
-    })
+        .then(res => this.setState((prevState) => ({
+          data: prevState.data.filter(n => n.id !== id)
+        })))
+        .catch('Se ha cometido un errorcito')
+    }
   }
 
   render() {
@@ -50,7 +45,7 @@ class App extends React.Component {
               <p>Titulo: {n.title}</p>
               <p>Content: {n.content}</p>
               <Grid item xs={8}>
-                <DeleteIcon onClick={() => this.removeNote(n.id)} className={classes.icon} />
+                <DeleteIcon onClick={this.deleteNote(n.id)} className={classes.icon} />
               </Grid>
             </Paper>
           ))}

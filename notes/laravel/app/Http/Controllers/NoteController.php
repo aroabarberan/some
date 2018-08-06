@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\NoteService;
+use App\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -14,18 +15,21 @@ class NoteController extends Controller
         $this->service = $service;
     }
 
-    public function allNotes()
+    public function allNotes(Request $request)
     {
         $notes = $this->service->readAll();
-        $res = response()->json(['results' => $notes]);
-        return $res;
+        $request = response()->json(['results' => $notes]);        
+        return $request;
     }
 
-    public function deleteNote(Request $res)
+    public function deleteNote($id)
     {
-        echo 'asdas';
-        // $res->delete();
-        echo "<pre>" . print_r($res);
-        // return view('notes', $res);
+        try  {
+            DB::table('notes')->where('id', $id)->delete();    
+            return response()->json('note deleted');
+        }
+        catch (Exception $e) {
+            return response()->json($e->getMessage(), 500);
+        }
     }
 }
