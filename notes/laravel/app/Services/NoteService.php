@@ -11,5 +11,10 @@ class NoteService
     public function readAll()
     {
         return Note::all();
+        
+    }
+
+    public function delete() {
+        
     }
 }

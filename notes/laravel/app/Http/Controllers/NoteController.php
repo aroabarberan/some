@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Exceptions\NoteNotFoundException;
-use App\Note;
 use App\Services\NoteService;
-use Illuminate\Validation\UnauthorizedException;
-
-
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
     private $service;
 
-    public function __construct(NoteService $service) {
+    public function __construct(NoteService $service)
+    {
         $this->service = $service;
     }
 
-    public function allNotes() {
+    public function allNotes()
+    {
         $notes = $this->service->readAll();
-        // $res = json_encode(['results' => $notes]);
         $res = response()->json(['results' => $notes]);
         return $res;
+    }
+
+    public function deleteNote(Request $res)
+    {
+        echo 'asdas';
+        // $res->delete();
+        echo "<pre>" . print_r($res);
+        // return view('notes', $res);
     }
 }

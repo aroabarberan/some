@@ -12,6 +12,7 @@
 */
 
 Route::get('/notes', 'NoteController@allNotes')->name('notes');
+Route::post('/notes/{id}', 'NoteController@deleteNote')->name('notes');
 
 Auth::routes();
 
