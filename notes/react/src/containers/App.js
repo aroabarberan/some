@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      data: [],
+      notes: [],
     };
     this.deleteNote = this.deleteNote.bind(this)
   }
@@ -19,7 +19,7 @@ class App extends React.Component {
     fetch('http://127.0.0.1:8000/notes')
       .then(res => res.json())
       .then(json => json.results)
-      .then(data => this.setState({ data }))
+      .then(notes => this.setState({ notes }))
       .catch(console.log)
   }
   deleteNote(id) {
@@ -28,7 +28,7 @@ class App extends React.Component {
         method: "DELETE",
       })
         .then(res => this.setState((prevState) => ({
-          data: prevState.data.filter(n => n.id !== id)
+          notes: prevState.notes.filter(n => n.id !== id)
         })))
         .catch('Se ha cometido un errorcito')
     }
@@ -36,11 +36,11 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
-    if (this.state.data.length > 0) {
+    if (this.state.notes.length > 0) {
       return (
         <div>
           <h1>Notas</h1>
-          {this.state.data.map(n => (
+          {this.state.notes.map(n => (
             <Paper key={n.id} className={classes.root} elevation={1}>
               <p>Titulo: {n.title}</p>
               <p>Content: {n.content}</p>
