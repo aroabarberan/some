@@ -13,7 +13,7 @@
 
 Route::get('/notes', 'NoteController@allNotes')->name('notes');
 Route::delete('/notes/{id}', 'NoteController@deleteNote');
-Route::post('/notes', 'NoteController@storeNote')->name('notes.store');
+Route::post('/notes', 'NoteController@storeNote');
 
 Auth::routes();
 

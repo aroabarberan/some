@@ -35,8 +35,7 @@ class NoteController extends Controller
     }
 
     public function storeNote(Request $request) {
-        echo $request;
-        echo '<pre>' . print_r($request, true);
+        return response()->json($request);
     }
 
 }
