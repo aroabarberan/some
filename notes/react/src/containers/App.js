@@ -3,9 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
-import CreateNote from "../containers/Form";
-// import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form"
 
+const nameForm = 'create-note'
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +15,8 @@ class App extends React.Component {
       notes: [],
     };
     this.deleteNote = this.deleteNote.bind(this)
+    this.submitToServer = this.submitToServer.bind(this)
+    this.submit = this.submit.bind(this)
   }
 
   componentWillMount() {
@@ -24,7 +26,7 @@ class App extends React.Component {
       .then(notes => this.setState({ notes }))
       .catch(console.log)
   }
-  
+
   deleteNote(id) {
     return () => {
       fetch('http://127.0.0.1:8000/notes/' + id, {
@@ -37,14 +39,45 @@ class App extends React.Component {
     }
   }
 
+  async submitToServer(data) {
+    let response = await fetch('http://127.0.0.1:8000/notes', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    let responseJSON = await response.json()
+    return responseJSON
+  }
+
+  async submit({ title, content }) {
+    return this.submitToServer({ title, content })
+      .then(res => this.setState((prevState) => ({
+        notes: [...prevState.notes, {
+          id: prevState.notes.pop().id + 1,
+          title: title,
+          content: content
+        }]
+      })))
+  }
+
+
+
   render() {
     const { classes } = this.props;
     if (this.state.notes.length > 0) {
+  
       return (
         <div>
           <h1>Notas</h1>
           <Paper>
-            <CreateNote />
+            <form onSubmit={this.props.handleSubmit(this.submit)}>
+              <Field name="title" label="Title" component={renderField} type="text" />
+              <Field name="content" label='Content' component={renderField} type="text" />
+              <button type="submit">Submit</button>
+            </form>
           </Paper>
           {this.state.notes.map(n => (
             <Paper key={n.id} className={classes.root} elevation={1}>
@@ -63,6 +96,18 @@ class App extends React.Component {
   }
 }
 
+
+const renderField = ({ type, label, input, meta: { touched, error } }) => {
+  return (
+    <div className='input-row' >
+      <label>{label}</label>
+      <input {...input} type={type} />
+      {touched && error && <span className='error'>{error}</span>}
+    </div>
+  )
+}
+
+
 const styles = theme => ({
   root: {
     margin: 10,
@@ -77,4 +122,4 @@ const styles = theme => ({
 });
 
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(reduxForm({ form: nameForm })(App))
