@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
+import CreateNote from "../containers/Form";
+// import { connect } from "react-redux";
 
 
 class App extends React.Component {
@@ -22,6 +24,7 @@ class App extends React.Component {
       .then(notes => this.setState({ notes }))
       .catch(console.log)
   }
+  
   deleteNote(id) {
     return () => {
       fetch('http://127.0.0.1:8000/notes/' + id, {
@@ -40,6 +43,9 @@ class App extends React.Component {
       return (
         <div>
           <h1>Notas</h1>
+          <Paper>
+            <CreateNote />
+          </Paper>
           {this.state.notes.map(n => (
             <Paper key={n.id} className={classes.root} elevation={1}>
               <p>Titulo: {n.title}</p>

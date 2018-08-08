@@ -33,4 +33,10 @@ class NoteController extends Controller
             return response()->json($e->getMessage(), 500);
         }
     }
+
+    public function storeNote(Request $request) {
+        echo $request;
+        echo '<pre>' . print_r($request, true);
+    }
+
 }
