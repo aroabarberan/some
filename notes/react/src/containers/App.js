@@ -13,10 +13,10 @@ class App extends React.Component {
 
     this.state = {
       notes: [],
+      title: '',
+      content: ''
     };
     this.deleteNote = this.deleteNote.bind(this)
-    this.submitToServer = this.submitToServer.bind(this)
-    this.submit = this.submit.bind(this)
   }
 
   componentWillMount() {
@@ -39,49 +39,51 @@ class App extends React.Component {
     }
   }
 
-  async submitToServer(data) {
-    let response = await fetch('http://127.0.0.1:8000/notes', {
+  submit = evt => {
+    evt.preventDefault();
+
+    const { title, content } = this.state;
+
+    fetch('http://127.0.0.1:8000/notes', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: { title, content }
     })
-    let responseJSON = await response.json()
-    return responseJSON
-  }
+    this.setState({ title: '', content: '' });
+    setTimeout(() => {
+      this.setState(({ notes }) => ({ notes: [...notes, { title, content }] }));
+    }, 1000);
+  };
 
-  submit({ title, content }) {
-    this.submitToServer({ title, content })
-      .then(res => this.setState(prevState => ({
-        notes: [...prevState.notes, {
-          id: prevState.notes.pop().id + 1,
-          title: title,
-          content: content
-        }]
-      })))
-  }
+
+  handleChange = evt => {
+    this.setState({ [evt.target.name]: evt.target.value });
+  };
+
 
   render() {
+    const { notes } = this.state;
     const { classes } = this.props;
     if (this.state.notes.length > 0) {
       return (
         <div>
           <h1>Notas</h1>
           <Paper>
-            <form onSubmit={this.props.handleSubmit(this.submit)}>
-              <Field name="title" label="Title" component={renderField} type="text" />
-              <Field name="content" label='Content' component={renderField} type="text" />
+            <form onSubmit={this.submit}>
+              <Field name="title" label="Title" component={renderField} onChange={this.handleChange} type="text" />
+              <Field name="content" label='Content' component={renderField} onChange={this.handleChange} type="text" />
               <button type="submit">Submit</button>
             </form>
           </Paper>
-          {this.state.notes.map(n => (
-            <Paper key={n.id} className={classes.root} elevation={1}>
-              <p>Titulo: {n.title}</p>
-              <p>Content: {n.content}</p>
+          {notes.map((note, index) => (
+            <Paper key={index} className={classes.root} elevation={1}>
+              <p>Titulo: {note.title}</p>
+              <p>Content: {note.content}</p>
               <Grid item xs={8}>
-                <DeleteIcon onClick={this.deleteNote(n.id)} className={classes.icon} />
+                <DeleteIcon onClick={this.deleteNote(note.id)} className={classes.icon} />
               </Grid>
             </Paper>
           ))}
