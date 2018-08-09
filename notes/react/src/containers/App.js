@@ -1,8 +1,8 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Grid from '@material-ui/core/Grid';
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import DeleteIcon from '@material-ui/icons/Delete'
+import Grid from '@material-ui/core/Grid'
 import { Field, reduxForm } from "redux-form"
 
 const nameForm = 'create-note'
@@ -52,9 +52,9 @@ class App extends React.Component {
     return responseJSON
   }
 
-  async submit({ title, content }) {
-    return this.submitToServer({ title, content })
-      .then(res => this.setState((prevState) => ({
+  submit({ title, content }) {
+    this.submitToServer({ title, content })
+      .then(res => this.setState(prevState => ({
         notes: [...prevState.notes, {
           id: prevState.notes.pop().id + 1,
           title: title,
@@ -63,12 +63,9 @@ class App extends React.Component {
       })))
   }
 
-
-
   render() {
     const { classes } = this.props;
     if (this.state.notes.length > 0) {
-  
       return (
         <div>
           <h1>Notas</h1>
