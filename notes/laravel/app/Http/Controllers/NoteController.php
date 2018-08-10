@@ -16,7 +16,6 @@ class NoteController extends Controller
     public function __construct(NoteService $service)
     {
         $this->service = $service;
-        Log::info('one message');
     }
 
     public function allNotes(Request $request)
@@ -38,9 +37,11 @@ class NoteController extends Controller
     }
 
     public function storeNote(Request $request) {
-        Log::info($request);
-        echo $request;
-        // return view('/notes', $request);
-        // return $request;
+        $note = new Note;
+        $note->title = $request['title'];
+        $note->content = $request['content'];
+        $note->save();
+        Log::info($note);
+
     }
 }
