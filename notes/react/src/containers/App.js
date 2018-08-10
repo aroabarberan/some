@@ -50,7 +50,7 @@ class App extends React.Component {
         'Accept': 'application/json',
         'Content-type': 'application/json',
       },
-      body: { title, content }
+      body: JSON.stringify({ title, content }),
     })
     this.setState({ title: '', content: '' });
     setTimeout(() => {

@@ -1,2 +1,4 @@
 
-<!-- <p>{{$res;}}</p> -->
+<?php
+
+echo $request;

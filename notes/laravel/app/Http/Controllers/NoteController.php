@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Services\NoteService;
 use App\Note;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class NoteController extends Controller
 {
@@ -14,6 +16,7 @@ class NoteController extends Controller
     public function __construct(NoteService $service)
     {
         $this->service = $service;
+        Log::info('one message');
     }
 
     public function allNotes(Request $request)
@@ -35,7 +38,9 @@ class NoteController extends Controller
     }
 
     public function storeNote(Request $request) {
+        Log::info($request);
         echo $request;
-        return $request;
+        // return view('/notes', $request);
+        // return $request;
     }
 }
