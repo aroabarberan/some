@@ -6,14 +6,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Theme from '../styles/Theme';
 
 
 const Nav = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" className={classes.root}>
         <Toolbar variant="dense">
           <IconButton className={classes.menuButton} color="inherit" >
             <MenuIcon />
@@ -27,18 +26,16 @@ const Nav = props => {
   );
 }
 
-console.log(Theme);
 
-const styles = Theme => ({
+const styles = theme => ({
+  ...theme,
   root: {
     flexGrow: 1,
+    background: theme.palette.dark
   },
   menuButton: {
     marginLeft: -18,
     marginRight: 10,
-  },
-  toolbar: {
-    backgroundColor: 'red'
   }
 })
 
@@ -46,5 +43,4 @@ Nav.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// export default withStyles(styles)(Nav);
-export default withStyles(styles)(Nav);
+export default withStyles(styles, { withTheme: true })(Nav);

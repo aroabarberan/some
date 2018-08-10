@@ -42,6 +42,5 @@ class NoteController extends Controller
         $note->content = $request['content'];
         $note->save();
         Log::info($note);
-
     }
 }
