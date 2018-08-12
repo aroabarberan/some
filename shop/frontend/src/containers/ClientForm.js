@@ -1,6 +1,5 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import { Paper } from '@material-ui/core'
+import { Paper, withStyles } from '@material-ui/core'
 import { Field, reduxForm } from "redux-form"
 
 

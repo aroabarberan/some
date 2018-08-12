@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import ClientForm from "./ClientForm";
+import SimpleAppBar from '../components/SimpleAppBar';
+import AddClient from "../components/AddClient";
 
 class App extends Component {
   render() {
+    const { classes } = this.props
     return (
       <div>
-        <ClientForm />
+        <SimpleAppBar />
+        <AddClient />
       </div>
     );
   }
