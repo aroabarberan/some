@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOrdersTable extends Migration
 {
@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->date('date');
         });
 
-        Schema::table('orders', function($table) {
+        Schema::table('orders', function ($table) {
             $table->foreign('client')->references('id')->on('clients');
             $table->foreign('product')->references('id')->on('products');
         });

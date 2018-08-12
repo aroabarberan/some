@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePhonesTable extends Migration
 {
@@ -19,14 +19,12 @@ class CreatePhonesTable extends Migration
             $table->unsignedInteger('tag');
             $table->string('number');
 
-            $table->foreign('client')->references('id')->on('clients');
-            // $table->foreign('tag')->references('id')->on('phone_tags');
         });
 
-        // Schema::table('phones', function($table) {
-        //     $table->foreign('client')->references('id')->on('clients');
-        //     $table->foreign('tag')->references('id')->on('phone_tags');
-        // });
+        Schema::table('phones', function ($table) {
+            $table->foreign('client')->references('id')->on('clients');
+            $table->foreign('tag')->references('id')->on('phone_tags');
+        });
     }
 
     /**

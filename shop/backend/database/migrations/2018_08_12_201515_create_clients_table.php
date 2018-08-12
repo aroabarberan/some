@@ -21,11 +21,10 @@ class CreateClientsTable extends Migration
             $table->date('birthdate');
         });
 
-        Schema::table('clients', function($table) {
+        Schema::table('clients', function ($table) {
             $table->foreign('user')->references('id')->on('users');
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -36,4 +35,3 @@ class CreateClientsTable extends Migration
         Schema::dropIfExists('clients');
     }
 }
-

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateProductsTable extends Migration
 {
@@ -18,10 +18,10 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('family');
             $table->string('name');
             $table->integer('price');
-            $table->binary('image');
+            $table->binary('image')->nullable();
         });
 
-        Schema::table('products', function($table) {
+        Schema::table('products', function ($table) {
             $table->foreign('family')->references('id')->on('families');
         });
     }
