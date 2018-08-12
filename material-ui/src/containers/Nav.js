@@ -8,30 +8,27 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 
-const Nav = props => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed" className={classes.root}>
-        <Toolbar variant="dense">
-          <IconButton className={classes.menuButton} color="inherit" >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="headline" color="inherit">
-            Headline
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
+const Nav = ({ classes }) => (
+  <div className={classes.root}>
+    <AppBar position="fixed" >
+      <Toolbar variant="dense">
+        <IconButton className={classes.menuButton} color="inherit">
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="headline" color="inherit">
+          Headline
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  </div>
+)
+
 
 
 const styles = theme => ({
-  ...theme,
   root: {
     flexGrow: 1,
-    background: theme.palette.dark
+    background: theme.palette.primary.dark
   },
   menuButton: {
     marginLeft: -18,
