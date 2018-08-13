@@ -21,10 +21,11 @@ class ClientForm extends React.Component {
 
     const { name, last_name } = this.state;
 
-    this.setState({ name: '', last_name: '' });
-    setTimeout(() => {
-      this.setState(({ clients }) => ({ clients: [...clients, { name, last_name }] }));
-    }, 1000);
+
+    // this.setState({ name: '', last_name: '' });
+    // setTimeout(() => {
+    //   this.setState(({ clients }) => ({ clients: [...clients, { name, last_name }] }));
+    // }, 1000);
   };
 
 
@@ -33,12 +34,9 @@ class ClientForm extends React.Component {
   };
 
   render() {
-    const { clients } = this.state;
-    const { classes } = this.props;
-
     return (
       <div>
-        <h1>Clients</h1>
+        <h4>Clients</h4>
         <Paper>
           <form onSubmit={this.submit}>
             <Field name="name" label="Name" component={renderField} onChange={this.handleChange} type="text" />
@@ -46,12 +44,6 @@ class ClientForm extends React.Component {
             <button type="submit">Submit</button>
           </form>
         </Paper>
-        {clients.map((client, index) => (
-          <Paper key={index} className={classes.root} elevation={1}>
-            <p>Name: {client.name}</p>
-            <p>Last Name: {client.last_name}</p>
-          </Paper>
-        ))}
       </div>
     )
   }
@@ -79,5 +71,21 @@ const styles = theme => ({
   },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    clients: state
+  }
+}
 
-export default withStyles(styles, { withTheme: true })(reduxForm({ form: nameForm })(ClientForm))
+const mapDispatchToProps = dispatch => {
+  return {
+    allClient: () => {
+      dispatch(allClient())
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)
+  (withStyles(styles, { withTheme: true })
+  (reduxForm({ form: nameForm })(ClientForm)))

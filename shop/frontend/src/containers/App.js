@@ -4,7 +4,6 @@ import AddClient from "../components/AddClient";
 
 class App extends Component {
   render() {
-    const { classes } = this.props
     return (
       <div>
         <SimpleAppBar />

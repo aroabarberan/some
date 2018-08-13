@@ -5,3 +5,7 @@ export const createClient = client => ({
   payload: client,
 })
 
+export const allClient = () => ({
+  type: ALL_CLIENT
+})
+
