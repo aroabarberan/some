@@ -1,111 +1,105 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
+import { connect } from "react-redux";
+import { Grid, Paper, withStyles } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
-import Grid from '@material-ui/core/Grid'
-import { Field, reduxForm } from "redux-form"
+import {
+  addNote,
+  deleteNote,
+  updateInfoForm,
+  clearForm
+} from "../actions/NoteActions";
 
-const nameForm = 'create-note'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      notes: [],
-      title: '',
-      content: ''
-    };
     this.deleteNote = this.deleteNote.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.submit = this.submit.bind(this)
   }
 
   componentWillMount() {
-    fetch('http://127.0.0.1:8000/notes')
+    fetch('http://localhost:8000/api/notes')
       .then(res => res.json())
-      .then(json => json.results)
-      .then(notes => this.setState({ notes }))
+      .then(notes => notes.map(note => this.props.addNote(note)))
       .catch(console.log)
   }
 
   deleteNote(id) {
     return () => {
-      fetch('http://127.0.0.1:8000/notes/' + id, {
-        method: "DELETE",
-      })
-        .then(res => this.setState((prevState) => ({
-          notes: prevState.notes.filter(n => n.id !== id)
-        })))
+      fetch('http://127.0.0.1:8000/api/note/' + id, { method: "DELETE" })
         .catch('Se ha cometido un errorcito')
+
+      this.props.deleteNote(id)
     }
   }
 
-  submit = evt => {
+  submit(evt) {
     evt.preventDefault();
+    console.log()
+    // const { form } = this.props.notes
+    // let { title } = form[0]
+    // let { content } = form[1]
 
-    const { title, content } = this.state;
-
-    fetch('http://127.0.0.1:8000/notes', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ title, content }),
+    // fetch('http://127.0.0.1:8000/api/notes', {
+    //   method: "POST",
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ title, content }),
+    // })
+    this.props.addNote({
+      title: this.props.title,
+      content: this.props.content,
     })
-    this.setState({ title: '', content: '' });
-    setTimeout(() => {
-      this.setState(({ notes }) => ({ notes: [...notes, { title, content }] }));
-    }, 1000);
-  };
+    // this.props.updateInfoForm({title: '', content: ''})
+  }
 
 
-  handleChange = evt => {
-    this.setState({ [evt.target.name]: evt.target.value });
+  handleChange(evt) {
+    // this.props.updateInfoForm({ [evt.target.name]: evt.target.value })
+    this.props.updateInfoForm({
+      title: this.props.title,
+      content: this.props.content,
+      [evt.target.name]: evt.target.value
+    })
   };
 
 
   render() {
-    const { notes } = this.state;
-    const { classes } = this.props;
-    if (this.state.notes.length > 0) {
-      return (
-        <div>
-          <h1>Notas</h1>
-          <Paper>
-            <form onSubmit={this.submit}>
-              <Field name="title" label="Title" component={renderField} onChange={this.handleChange} type="text" />
-              <Field name="content" label='Content' component={renderField} onChange={this.handleChange} type="text" />
-              <button type="submit">Submit</button>
-            </form>
+    const { classes } = this.props
+    const { notes } = this.props.notes
+    return (
+      <div>
+        <h1>Notas</h1>
+        <Paper>
+          <form onSubmit={this.submit}>
+            <div>
+              <label>Title</label>
+              <input type="text" name='title' onChange={this.handleChange} />
+            </div>
+            <div>
+              <label>Content</label>
+              <input type="text" name='content' onChange={this.handleChange} />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </Paper>
+        {notes.map((note, index) => (
+          <Paper key={index} className={classes.root} elevation={1}>
+            <p>Titulo: {note.title}</p>
+            <p>Content: {note.content}</p>
+            <Grid item xs={8}>
+              <DeleteIcon onClick={this.deleteNote(note.id)} className={classes.icon} />
+            </Grid>
           </Paper>
-          {notes.map((note, index) => (
-            <Paper key={index} className={classes.root} elevation={1}>
-              <p>Titulo: {note.title}</p>
-              <p>Content: {note.content}</p>
-              <Grid item xs={8}>
-                <DeleteIcon onClick={this.deleteNote(note.id)} className={classes.icon} />
-              </Grid>
-            </Paper>
-          ))}
-        </div>
-      )
-    } else {
-      return <p>Cargando notas...</p>
-    }
+        ))}
+      </div>
+    )
   }
 }
-
-
-const renderField = ({ type, label, input, meta: { touched, error } }) => {
-  return (
-    <div className='input-row' >
-      <label>{label}</label>
-      <input {...input} type={type} />
-      {touched && error && <span className='error'>{error}</span>}
-    </div>
-  )
-}
-
 
 const styles = theme => ({
   root: {
@@ -121,4 +115,28 @@ const styles = theme => ({
 });
 
 
-export default withStyles(styles)(reduxForm({ form: nameForm })(App))
+const mapStateToProps = state => ({
+  notes: state.notes,
+  form: state.notes.form
+})
+
+const mapDispatchToProps = dispatch => ({
+  addNote: note => {
+    dispatch(addNote(note))
+  },
+
+  deleteNote: noteInfo => {
+    dispatch(deleteNote(noteInfo))
+  },
+
+  updateInfoForm: noteInfo => {
+    dispatch(updateInfoForm(noteInfo))
+  },
+
+  clearForm: () => {
+    dispatch(clearForm())
+  },
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App))
