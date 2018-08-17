@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Note;
+// use App\Http\Resources\Note as NoteResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +15,37 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-// Route::delete('/notes/{id}', function($id) {
-//     header('Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, DELETE');
-//     try  {
-//         DB::table('notes')->where('id', $id)->delete();    
-//         return response()->json('note deleted');
-//     }
-//     catch (Exception $e) {
-//         return response()->json($e->getMessage(), 500);
-//     }
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
 // });
 
-// Route::post('/notes', 'Api\Auth\NoteController@store');
+Route::group(['prefix'=>'/'], function () {
+
+    Route::get('/notes', function () {
+        return Note::all();
+    });
+
+    Route::get('/note/{id}', function ($id) {
+        return Note::find($id);
+    });
+
+    Route::post('/notes', function(Request $request) {
+        $note = new Note;
+        $note->title = $request['title'];
+        $note->content = $request['content'];
+        $note->save();
+        return "Note created correctly";
+    });
+
+    //TODO
+    Route::put('/notes/{id}', function(Request $request, $id) {
+        $note = Note::find($id);
+        $note->update($request->all());
+        return "Note updated correctly";
+    });
+
+    Route::delete('/note/{id}', function($id) {
+        Note::find($id)->delete();
+        return "Note delete correctly";
+    });
+});
