@@ -1,2 +1,2 @@
-# some
-some exercises to practice with laravel and react
+# training-react
+some exercises to practice with react
