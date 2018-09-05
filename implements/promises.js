@@ -8,6 +8,6 @@ function readFilePromise(file, encoding = 'utf-8') {
   })
 }
 
-readFilePromise('tesxt.txt')
+readFilePromise('text.txt')
   .then(console.log)
   .catch(console.log)
