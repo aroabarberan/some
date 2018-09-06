@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+
+    <p id='number'></p>
+    <button onclick="increment()">Increment</button>
+    <script>
+      if (document.getElementById('number').value == undefined) {
+        fetch('http://localhost/training-react/increments/getNumberFile.php')
+          .then(response => response.json())
+          .then(json => document.getElementById('number').innerHTML = json)   
+      }
+    </script>
+    <script>
+      function increment() {
+        fetch('http://localhost/training-react/increments/increments.php')
+          .then(response => response.json())
+          .then(json => document.getElementById('number').innerHTML = json)
+        }
+</script>
+  </body>
+</html>
